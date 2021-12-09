@@ -63,7 +63,7 @@ class LoginActivity : AppCompatActivity() {
                     return@setOnClickListener
                 }
 
-                if (password.length < 6 || repeatPassword.length < 6 ) {
+                if (password.length < 9 || repeatPassword.length < 9 ) {
                     Toast.makeText(this, "Password Is Too Short!", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
@@ -71,7 +71,8 @@ class LoginActivity : AppCompatActivity() {
                 if (password != repeatPassword) {
                     Toast.makeText(this, "Passwords Do Not Match!", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
-                }
+                } else if (email.contains("@gmail.com") && email.length > 11 && password.length > 9 && repeatPassword.length > 9 )
+
 
             FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->

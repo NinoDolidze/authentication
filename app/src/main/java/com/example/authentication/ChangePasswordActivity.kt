@@ -33,7 +33,7 @@ class ChangePasswordActivity : AppCompatActivity() {
 
             val newPassword = editTextNewPassword.text.toString()
 
-            if (newPassword.isEmpty() || newPassword.length < 6) {
+            if (newPassword.isEmpty() || newPassword.length < 9) {
                 Toast.makeText(this, "Incorrect New Password", Toast.LENGTH_SHORT).show()
             } else {
 

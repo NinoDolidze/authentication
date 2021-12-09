@@ -58,7 +58,8 @@ class RegisterActivity : AppCompatActivity() {
                 Toast.makeText(this, "Email is too short!", Toast.LENGTH_SHORT).show()
             }
 
-            if (password.length <6 || repeatPassword.length < 6 ) {
+
+            if (password.length <9 || repeatPassword.length < 9 ) {
                 Toast.makeText(this, "password is short!", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
@@ -66,17 +67,18 @@ class RegisterActivity : AppCompatActivity() {
             if (password != repeatPassword) {
                 Toast.makeText(this, "passwords do not match", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
-            }
+            } else if (email.contains("@gmail.com") && email.length > 11 && password.length > 9 && repeatPassword.length > 9 ) {
 
-            FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        startActivity(Intent(this, LoginActivity::class.java))
-                        finish()
-                    } else {
-                        Toast.makeText(this, "Error!", Toast.LENGTH_SHORT).show()
+                FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            startActivity(Intent(this, LoginActivity::class.java))
+                            finish()
+                        } else {
+                            Toast.makeText(this, "Error!", Toast.LENGTH_SHORT).show()
+                        }
                     }
-                }
+            }
         }
     }
 
